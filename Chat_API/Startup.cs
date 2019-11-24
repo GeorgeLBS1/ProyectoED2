@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Chat_API.Models;
+using Chat_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,8 +31,9 @@ namespace Chat_API
             services.Configure<ChatDatabaseSettings>(
                 Configuration.GetSection(nameof(ChatDatabaseSettings)));
 
-            services.AddSingleton<IChatDatabaseSettings>(sp =>
+            services.AddSingleton<IChatDatabaseSettings>(sp =>  
                 sp.GetRequiredService<IOptions<ChatDatabaseSettings>>().Value);
+            services.AddSingleton<LoginService>();
             services.AddControllers();
         }
 
