@@ -13,8 +13,8 @@ namespace Chat_API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly LoginService _loginService;
-        public LoginController(LoginService loginService)
+        private readonly UserService _loginService;
+        public LoginController(UserService loginService)
         {
             _loginService = loginService;
         }

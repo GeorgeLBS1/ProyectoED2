@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Chat_API.Models;
+using Chat_API.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Chat_API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SignInController : ControllerBase
+    {
+        private readonly UserService _loginService;
+        public SignInController(UserService loginService) //Constructor
+        {
+            _loginService = loginService;
+        }
+
+        //Creación de un nuevo usuario
+        [HttpPost]
+        public ActionResult<Usuario> Create(Usuario user)
+        {
+            List<Usuario> usuarios = _loginService.Get(); //Lista usada para evitar que existan usuarios repetidos        
+            if (!(usuarios.Exists(x => x.NickName == user.NickName)))
+            {
+                _loginService.Create(user);
+                return StatusCode(201);
+            }
+            else
+            {
+                return StatusCode(409);
+            }
+            
+        }
+
+    }
+}

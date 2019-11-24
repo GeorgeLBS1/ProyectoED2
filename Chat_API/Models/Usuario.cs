@@ -12,8 +12,8 @@ namespace Chat_API.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public string Nombre { get; set; } //Nombre del usuario o nickname
-        public string Email { get; set; } //identificador para el registro
+        public string NickName { get; set; } //Nombre del usuario o nickname
+        public string Name { get; set; } //identificador para el registro
         public string Password { get; set; } //contraseña a guardar en la base de datos
     }
 }
