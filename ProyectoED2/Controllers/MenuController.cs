@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using ProyectoED2.Helper;
+using ProyectoED2.Models;
 
 namespace ProyectoED2.Controllers
 {
     public class MenuController : Controller
     {
+        ChatAPI _api = new ChatAPI();
         // GET: Menu
         public ActionResult Index()
         {
@@ -45,21 +50,36 @@ namespace ProyectoED2.Controllers
         }
 
         // GET: Menu/Edit/5
-        public ActionResult Edit(int id)
+        public async Task <IActionResult> Edit()
         {
-            return View();
+            HttpClient client = _api.Initial();
+            HttpResponseMessage res = await client.GetAsync($"api/Login/{GlobalData.ActualUser.NickName}");
+            UserData user = new UserData();
+            if (res.IsSuccessStatusCode)
+            {
+                var results = res.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<UserData>(results); //Obtener de los datos del usuario ingresado
+                return View(user);
+            }
+                return View();
         }
 
         // POST: Menu/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(UserData userData)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                GlobalData.ActualUser.Name = userData.Name;
+                GlobalData.ActualUser.Password = userData.Password;
+                HttpClient client = _api.Initial();
+                var res = client.PutAsJsonAsync($"api/SignIn/", GlobalData.ActualUser);
+                res.Wait();
+                if (res.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {

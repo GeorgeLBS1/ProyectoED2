@@ -37,5 +37,19 @@ namespace Chat_API.Controllers
             
         }
 
+        [HttpPut]
+        public IActionResult Update([FromBody]Usuario user) //Editar alguna pizza ya creada
+        {
+            var NewData = _loginService.Get(user.NickName);
+            if (NewData == null)
+            {
+                return NotFound();
+            }
+            user.Id = NewData.Id; //Poner la misma id al objeto nuevo para no tener problemas en la edición
+            _loginService.Update(user.NickName, user);
+            return NoContent();
+
+        }
+
     }
 }
