@@ -34,6 +34,7 @@ namespace Chat_API
             services.AddSingleton<IChatDatabaseSettings>(sp =>  
                 sp.GetRequiredService<IOptions<ChatDatabaseSettings>>().Value);
             services.AddSingleton<UserService>();
+            services.AddSingleton<ContactosService>();
             services.AddControllers();
         }
 

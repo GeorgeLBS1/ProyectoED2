@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/styleAddContact.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Agregar contactos</title>
+</head>
+<body>
+    <div class="newsletter">
+        <h1>
+            Añadir
+            <span>Contactos</span>
+        </h1>
+    </div>
+    <form asp-controller="Menu" asp-action="AddConta" method="post">
+        <div class="search-box">
+            <input type="text" name="contact" class="search-txt" placeholder="Usuario a buscar" />
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+</body>
+</html>
