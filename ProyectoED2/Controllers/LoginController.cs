@@ -35,7 +35,7 @@ namespace ProyectoED2.Controllers
                 if (user.Password == password)
                 {
                     GlobalData.ActualUser = user;
-                    return RedirectToAction();
+                    return RedirectToAction("Index","Menu");
                 }
                 else
                 {
