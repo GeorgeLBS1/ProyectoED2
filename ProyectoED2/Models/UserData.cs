@@ -1,13 +1,13 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
-namespace Chat_API.Models
+namespace ProyectoED2.Models
 {
-    public class Usuario
+    public class UserData
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

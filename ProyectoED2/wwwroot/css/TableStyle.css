@@ -1,0 +1,77 @@
+body{
+  margin: 0;
+  padding: 0; 
+  font-family: sans-serif;
+  background: #050d21;
+}
+
+ul.selectable {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 50%;
+  float: left;
+}
+ul.selectable li {
+  list-style: none;
+  margin: 0 3em 0 4em;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+ul.selectable li.active {
+  margin-right: 0;
+}
+ul.selectable li.active dl {
+  background-color: #4f9ddf;
+}
+ul.selectable li dt {
+  background-color: #dfd24f;
+  padding: 1em;
+  margin-left: -2em;
+  margin-right: -2em;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+ul.selectable li dd {
+  padding: 0.25em;
+}
+ul.selectable li.active dt {
+  background-color: #4f9ddf;
+  margin-right: 0;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -khtml-border-top-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+ul.selectable li.active dd.top {
+  -webkit-border-bottom-right-radius: 8px;
+  -khtml-border-bottom-right-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-bottom-right-radius: 8px;
+}
+ul.selectable li.active dd.bot {
+  -webkit-border-top-right-radius: 8px;
+  -khtml-border-top-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  border-top-right-radius: 8px;
+}
+div.right {
+  float: left;
+  padding-top: 3em;
+  width: 50%;
+}
+
+div.Mensadjes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  align-items: center;
+  display: flex;
+}

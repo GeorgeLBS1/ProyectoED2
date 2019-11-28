@@ -18,7 +18,7 @@ namespace Chat_API.Controllers
         {
             _loginService = loginService;
         }
-        [HttpGet("{nombre}", Name = "GetUser")]
+        [HttpGet("{nombre}")]
         public ActionResult<Usuario> Get(string nombre)
         {
             var user = _loginService.Get(nombre);
@@ -28,5 +28,11 @@ namespace Chat_API.Controllers
             }
             return user;
         }
+
+        /*[HttpGet]
+        public List<Usuario> Get()
+        {
+            return _loginService.Get();
+        }*/
     }
 }

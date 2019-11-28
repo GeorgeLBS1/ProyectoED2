@@ -26,6 +26,7 @@ namespace Chat_API.Controllers
             List<Usuario> usuarios = _loginService.Get(); //Lista usada para evitar que existan usuarios repetidos        
             if (!(usuarios.Exists(x => x.NickName == user.NickName)))
             {
+                user.Code = usuarios.Count + 1;
                 _loginService.Create(user);
                 return StatusCode(201);
             }
