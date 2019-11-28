@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <form asp-controller="Login" asp-action="Ingresar" method="post">
+        <div class="Title-box">
+            <h1>Web Chat</h1>
+        </div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+
+            @*<input type="button" class="btn" value="Sign in"  onclick="location.href = '@Url.Action("Ingresar","Login")'">*@
+            <button type="submit" class="btn">Ingresar</button>
+            <h5>@Html.ActionLink("Crear una cuenta","Index","Registrar")</h5>
+        </div>
+    </form>
+    
+</body>
+</html>
+
