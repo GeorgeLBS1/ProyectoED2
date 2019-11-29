@@ -1,51 +1,41 @@
-﻿
+﻿@model IEnumerable<Chat_API.Models.Contactos>
+
 @{
-    Layout = null;
+    ViewData["Title"] = "Contactos";
 }
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap">
-    <link rel="stylesheet" type="text/css" href="~/css/styleContactos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Jose</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+<h1>Contactos</h1>
 
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Pedro</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
-
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Juan</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
-
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Maria</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
-
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-star" aria-hidden="true"></i></span>
-            <span class="name">Añadir nuevo contacto</span>
-            <span class="points"><a href="@Url.Action("Contactos", "Menu")"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></span>
-
-        </li>
-
-
-    </ul>
-</body>
-</html>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerNickName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerNickName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

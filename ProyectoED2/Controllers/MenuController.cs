@@ -22,12 +22,35 @@ namespace ProyectoED2.Controllers
         }
 
         // GET: Menu/Create
-        
-        public ActionResult MisContactos()
+        public static List<Contactos> lista = new List<Contactos>();
+        public async Task<IActionResult> MisContact()
         {
-            return View();
+            lista.Clear();
+            HttpClient client = _api.Initial();
+            var res = await client.GetAsync($"api/Contactos/{GlobalData.ActualUser.NickName}");
+            if (res.IsSuccessStatusCode)
+            {
+                var resultas = res.Content.ReadAsStringAsync().Result;
+                var contactosUser = JsonConvert.DeserializeObject<Contactos>(resultas); //Obtener de los datos del usuario ingresado
+                lista.Add(contactosUser);
+            }
+            return RedirectToAction("MisContactos", "Menu", lista);
         }
-        
+        [HttpGet]
+        public ActionResult MisContactos(List<Contactos> collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return View(lista);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult AddContacto()
         {
             return View();
@@ -94,20 +117,7 @@ namespace ProyectoED2.Controllers
         }
         // POST: Menu/Create
         
-        [HttpGet]
-        public ActionResult Contactos(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
 
         // GET: Menu/Edit/5
         public async Task <IActionResult> Edit()

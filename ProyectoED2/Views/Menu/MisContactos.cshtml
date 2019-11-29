@@ -1,8 +1,8 @@
 ﻿
-@{
+@{ 
     Layout = null;
 }
-
+@model IEnumerable<Chat_API.Models.Contactos>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,30 +14,42 @@
 </head>
 <body>
     <ul>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Jose</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+        @foreach (var item in Model)
+        {
+            @foreach (var amigo in item.ContactosAmigos)
+            {
+                <li>
+                    <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                    <span class="name">@amigo</span>
+                    <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+                </li>
+            }
 
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Pedro</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+        }
+        @*<li>
+                <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                <span class="name">Jose</span>
+                <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
 
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Juan</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+            </li>
+            <li>
+                <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                <span class="name">Pedro</span>
+                <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
 
-        </li>
-        <li>
-            <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
-            <span class="name">Maria</span>
-            <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+            </li>
+            <li>
+                <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                <span class="name">Juan</span>
+                <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
 
-        </li>
+            </li>
+            <li>
+                <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
+                <span class="name">Maria</span>
+                <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+
+            </li>*@
         <li>
             <span class="number"><i class="fa fa-star" aria-hidden="true"></i></span>
             <span class="name">Añadir nuevo contacto</span>
