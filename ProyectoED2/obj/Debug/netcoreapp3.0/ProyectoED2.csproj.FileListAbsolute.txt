@@ -429,3 +429,4 @@ C:\Users\Jorge\Desktop\https\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Pro
 C:\Users\Jorge\Desktop\https\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.dll
 C:\Users\Jorge\Desktop\https\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.pdb
 C:\Users\Jorge\Desktop\https\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Razor\Views\Mensajes\Index.cshtml.g.cs
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Razor\Views\Mensajes\Index.cshtml.g.cs
