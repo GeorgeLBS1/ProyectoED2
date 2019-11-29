@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProyectoED2.Models.MensajesViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mensajes</title>
+</head>
+<body>
+    <a href="http://localhost:61798/Mensajes">Recargar</a>
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emisor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cuerpo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Borrar", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <form asp-controller="Mensajes" asp-action="NuevoMensaje" method="post">
+        <div>
+
+            <input type="text" name="texto" />
+            <center><button type="submit">Enviar</button></center>
+
+        </div>
+    </form>
+
+
+
+</body>
+</html>

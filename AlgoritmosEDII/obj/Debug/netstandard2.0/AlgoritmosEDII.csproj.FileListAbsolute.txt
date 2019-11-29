@@ -6,3 +6,11 @@ C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\AlgoritmosEDII\obj\Debug
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.AssemblyInfo.cs
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.dll
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.pdb
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\bin\Debug\netstandard2.0\AlgoritmosEDII.deps.json
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\bin\Debug\netstandard2.0\AlgoritmosEDII.dll
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\bin\Debug\netstandard2.0\AlgoritmosEDII.pdb
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.csprojAssemblyReference.cache
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.AssemblyInfoInputs.cache
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.AssemblyInfo.cs
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.dll
+C:\Users\Jorge\Desktop\https\ProyectoED2\AlgoritmosEDII\obj\Debug\netstandard2.0\AlgoritmosEDII.pdb

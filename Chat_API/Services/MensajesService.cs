@@ -19,8 +19,11 @@ namespace Chat_API.Services
 
         }
 
-        public Mensajes Get(string nombre) =>
-            _mensajes.Find<Mensajes>(usuario => usuario.Emisor == nombre).FirstOrDefault();
+        public Mensajes GetMensajes(string mensaje) =>
+            _mensajes.Find<Mensajes>(x => x.Cuerpo == mensaje).FirstOrDefault();
+
+        public List<Mensajes> Get(string nombre) => //Obtener los mensajes de cierta conversación
+            _mensajes.Find<Mensajes>(usuario => usuario.Emisor == nombre || usuario.Receptor == nombre).ToList();
 
         public List<Mensajes> BuscarMensaje(string text) =>
             _mensajes.Find(msg => msg.Cuerpo.Contains(text)).ToList();
@@ -35,8 +38,8 @@ namespace Chat_API.Services
             return msj;
         }
 
-        public void BorrarParcial(string emisor, Mensajes user) => //Borrar los mensajes solo para una persona
-            _mensajes.ReplaceOne(x => x.Emisor == emisor, user);
+        public void BorrarParcial(string cuerpo, Mensajes user) => //Borrar los mensajes solo para una persona
+            _mensajes.ReplaceOne(x => x.Cuerpo == cuerpo && x.Emisor == user.Emisor && x.Receptor == user.Receptor, user);
 
         public void Remove(Mensajes mensajes) => //Eliminar buscando el emisor
             _mensajes.DeleteOne(x => x.Emisor == mensajes.Emisor);
