@@ -10,7 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoED2", "ProyectoED2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat_API", "Chat_API\Chat_API.csproj", "{5C2C42EF-F6B0-4897-9517-14BE003824D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoritmosEDII", "AlgoritmosEDII\AlgoritmosEDII.csproj", "{940252FA-B542-4542-A039-3BEB31582BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgoritmosEDII", "AlgoritmosEDII\AlgoritmosEDII.csproj", "{940252FA-B542-4542-A039-3BEB31582BE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CECCFBF2-D436-4B91-9A51-D3100FB5AE18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

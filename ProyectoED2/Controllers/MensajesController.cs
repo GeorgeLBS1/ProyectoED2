@@ -8,12 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ProyectoED2.Helper;
 using ProyectoED2.Models;
+using ProyectoED2.Utilities;
+using AlgoritmosEDII;
 
 namespace ProyectoED2.Controllers
 {
     public class MensajesController : Controller
     {
         ChatAPI _api = new ChatAPI();
+        SDES sdes = new SDES();
+        UserData user = new UserData();
+        GenerarClavesSeguras dh = new GenerarClavesSeguras(); //diffie-helfman
         // GET: Mensajes
         public async Task <IActionResult> Index()
         {
@@ -28,6 +33,16 @@ namespace ProyectoED2.Controllers
             }
             mensajes = mensajes.FindAll(x => ((x.Receptor == GlobalData.para && x.Emisor == GlobalData.ActualUser.NickName) || (x.Emisor == GlobalData.para && x.Receptor == GlobalData.ActualUser.NickName)) );
             mensajes = mensajes.OrderBy(x => x.Date).ToList();
+            int claveCifrado = dh.GenerarLlave(GlobalData.ActualUser.Code, user.Code);
+            mensajes.ForEach(x => x.Cuerpo = sdes.Desencriptar(claveCifrado, x.Cuerpo));
+            
+            HttpClient client1 = _api.Initial();
+            HttpResponseMessage respuesta = await client1.GetAsync($"api/Login/{GlobalData.para}");            
+            if (respuesta.IsSuccessStatusCode)
+            {
+                var results = respuesta.Content.ReadAsStringAsync().Result;
+                user = JsonConvert.DeserializeObject<UserData>(results); //Obtener de los datos del usuario ingresado
+            }
             return View(mensajes);
         }
 
@@ -35,6 +50,9 @@ namespace ProyectoED2.Controllers
         public IActionResult NuevoMensaje(string texto)
         {
             MensajesViewModel mensajesNuevo = new MensajesViewModel();
+
+            int claveCifrado = dh.GenerarLlave(GlobalData.ActualUser.Code, user.Code);
+            texto = sdes.Encriptar(claveCifrado, texto);
             mensajesNuevo.Cuerpo = texto;
             mensajesNuevo.Date = DateTime.Now.AddHours(-6);
             //DateTime HoraLocal = new DateTime(0, 0, 0, 6, 0, 0);

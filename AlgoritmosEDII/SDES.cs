@@ -8,6 +8,7 @@ namespace AlgoritmosEDII
 {
     public class SDES
     {
+
         public SDES()
         {
             LeerArchivoPermutaciones();
@@ -34,6 +35,7 @@ namespace AlgoritmosEDII
         int[] PermutarInversa = new int[8];
         void LeerArchivoPermutaciones()
         {
+
             StreamReader reader = new StreamReader("Permutaciones.txt");
             string line;
             while ((line = reader.ReadLine()) != null)
@@ -50,7 +52,7 @@ namespace AlgoritmosEDII
             PermutarInversa = PermutacionesDelArchivo[5].Split(',').Select(Int32.Parse).ToArray();
         }
         //Metodos públicos para hacer las operaciones de encriptar y desencriptar
-        public Queue<byte> Encriptar(int key, string RutaEntrada)
+        public string Encriptar(int key, string RutaEntrada)
         {
             char[] Key1 = new char[8];
             char[] Key2 = new char[8];
@@ -67,7 +69,7 @@ namespace AlgoritmosEDII
                 CifrarCaracteres(TextoEntrada.Dequeue(), Key1, Key2, ref TextoCifrado); //Cifrar cada caracter en el texto
                 ColaTextoCifrado.Enqueue(TextoCifrado);
             }
-            return ColaTextoCifrado;
+            return TextoCifra(ColaTextoCifrado);
         }
         public void LeerString(Queue<byte> ColaChar, string Texto)
         {
@@ -82,8 +84,9 @@ namespace AlgoritmosEDII
             string Resultado = "";
             while (Texto.Count > 0)
             {
-                char Letra = Convert.ToChar(Texto.Dequeue());
-                Resultado += Letra;
+                int Codigo = Convert.ToInt32(Texto.Dequeue());
+                string Letra = Convert.ToString(Codigo);
+                Resultado += Letra + ",";
             }
             int u = 0;
             return Resultado;
@@ -94,25 +97,42 @@ namespace AlgoritmosEDII
             string Salida = Encoding.UTF8.GetString(MensajeArreglo);
             return Salida;
         }
-        public string Desencriptar(int key, Queue<byte> ColaInicial)
+        public string Desencriptar(int key, string Texto)
         {
-            Queue<byte> TextoDescifrado = new Queue<byte>(); ;
+
             char[] Key1 = new char[8];
             char[] Key2 = new char[8];
-            //ColaTextoCifrado.Clear(); //Limpiar estructtturas de datos para evitar errores
+            ColaTextoCifrado.Clear(); //Limpiar estructtturas de datos para evitar errores
             TextoEntrada.Clear(); //Limpiar estructtturas de datos para evitar errores
             byte TextoCifrado = 0; //Se almacenara el texto cifrado a escribir en un archivo de texto
             //LeerArchivo(TextoEntrada, RutaEntrada);
-            //LeerString(TextoEntrada, RutaEntrada);
+            //LeerString(TextoEntrada, Texto);
+            Queue<byte> BytesEnviados = LeerCifrado(Texto);
             string Llave = Convert.ToString(key, 2);
             Llave = Llave.PadLeft(10, '0'); //Convertir el int ingresado 10 bits
             DefinirLlaves(Llave, ref Key1, ref Key2);
-            while (ColaInicial.Count > 0)
+            while (BytesEnviados.Count > 0)
             {
-                CifrarCaracteres(ColaInicial.Dequeue(), Key2, Key1, ref TextoCifrado); //Cifrar cada caracter en el texto
-                TextoDescifrado.Enqueue(TextoCifrado);
+                CifrarCaracteres(BytesEnviados.Dequeue(), Key2, Key1, ref TextoCifrado); //Cifrar cada caracter en el texto
+                ColaTextoCifrado.Enqueue(TextoCifrado);
             }
-            return TextoEnviado(TextoDescifrado);
+            return TextoDescifra(ColaTextoCifrado);
+        }
+        public string TextoDescifra(Queue<byte> ColaTextoDescifrado)
+        {
+            byte[] MensajeEscrito = ColaTextoCifrado.ToArray();
+            string Mensaje = Encoding.UTF8.GetString(MensajeEscrito);
+            return Mensaje;
+        }
+        public Queue<byte> LeerCifrado(string Texto)
+        {
+            Queue<byte> BytesMensaje = new Queue<byte>();
+            string[] Bytes = Texto.Split(',');
+            for (int i = 0; i < Bytes.Length - 1; i++)
+            {
+                BytesMensaje.Enqueue(Convert.ToByte(Bytes[i]));
+            }
+            return BytesMensaje;
         }
 
         //DEFINICION DE LAS PERMUTACIONES
