@@ -2840,6 +2840,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "AlgoritmosEDII/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/AlgoritmosEDII.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AlgoritmosEDII.dll": {}
+        }
       }
     }
   },
@@ -8960,10 +8970,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "AlgoritmosEDII/1.0.0": {
+      "type": "project",
+      "path": "../AlgoritmosEDII/AlgoritmosEDII.csproj",
+      "msbuildProject": "../AlgoritmosEDII/AlgoritmosEDII.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "AlgoritmosEDII >= 1.0.0",
       "Microsoft.AspNet.WebApi.Client >= 5.2.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.0.0",
@@ -8975,25 +8991,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jorge\\.nuget\\packages\\": {},
+    "C:\\Users\\josei\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jorge\\Desktop\\j\\Estructura de datos II\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
+      "projectUniqueName": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
       "projectName": "ProyectoED2",
-      "projectPath": "C:\\Users\\Jorge\\Desktop\\j\\Estructura de datos II\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
-      "packagesPath": "C:\\Users\\Jorge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jorge\\Desktop\\j\\Estructura de datos II\\ProyectoED2\\ProyectoED2\\obj\\",
+      "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
+      "packagesPath": "C:\\Users\\josei\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\josei\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -9006,7 +9022,11 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj": {
+              "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

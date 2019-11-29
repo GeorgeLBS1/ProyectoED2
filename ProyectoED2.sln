@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoED2", "ProyectoED2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat_API", "Chat_API\Chat_API.csproj", "{5C2C42EF-F6B0-4897-9517-14BE003824D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoritmosEDII", "AlgoritmosEDII\AlgoritmosEDII.csproj", "{940252FA-B542-4542-A039-3BEB31582BE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{5C2C42EF-F6B0-4897-9517-14BE003824D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2C42EF-F6B0-4897-9517-14BE003824D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2C42EF-F6B0-4897-9517-14BE003824D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940252FA-B542-4542-A039-3BEB31582BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940252FA-B542-4542-A039-3BEB31582BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940252FA-B542-4542-A039-3BEB31582BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940252FA-B542-4542-A039-3BEB31582BE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
