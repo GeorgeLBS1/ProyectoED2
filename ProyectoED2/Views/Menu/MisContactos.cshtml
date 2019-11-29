@@ -21,7 +21,10 @@
                 <li>
                     <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
                     <span class="name">@amigo</span>
-                    <span class="points"> <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+                    @{
+                        GlobalData.para = amigo;
+                    }
+                    <span class="points"> <a href="@Url.Action("Index", "Chat")"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
                 </li>
             }
 
