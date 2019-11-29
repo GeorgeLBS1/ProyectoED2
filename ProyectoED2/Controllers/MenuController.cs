@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Chat_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -20,34 +21,103 @@ namespace ProyectoED2.Controllers
             return View();
         }
 
-        // GET: Menu/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Menu/Create
-        public ActionResult Create()
+        public static List<Contactos> lista = new List<Contactos>();
+        public async Task<IActionResult> MisContact()
         {
-            return View();
+            lista.Clear();
+            HttpClient client = _api.Initial();
+            var res = await client.GetAsync($"api/Contactos/{GlobalData.ActualUser.NickName}");
+            if (res.IsSuccessStatusCode)
+            {
+                var resultas = res.Content.ReadAsStringAsync().Result;
+                var contactosUser = JsonConvert.DeserializeObject<Contactos>(resultas); //Obtener de los datos del usuario ingresado
+                lista.Add(contactosUser);
+            }
+            return RedirectToAction("MisContactos", "Menu", lista);
         }
-
-        // POST: Menu/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpGet]
+        public ActionResult MisContactos(List<Contactos> collection)
         {
             try
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction(nameof(Index));
+                return View(lista);
             }
             catch
             {
                 return View();
             }
         }
+
+        public ActionResult AddContacto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task <IActionResult> AddConta(string contact)
+        {
+            HttpClient client = _api.Initial();
+            if (contact != "" && contact != null)
+            {
+                HttpResponseMessage res = await client.GetAsync($"api/Login/{contact}");
+                UserData user = new UserData();
+                if (res.IsSuccessStatusCode)
+                {
+                    var results = res.Content.ReadAsStringAsync().Result;
+                    user = JsonConvert.DeserializeObject<UserData>(results); //Obtener de los datos del usuario ingresado
+                    res = await client.GetAsync($"api/Contactos/{GlobalData.ActualUser.NickName}");
+                    if (res.IsSuccessStatusCode)
+                    {
+                        var resultas = res.Content.ReadAsStringAsync().Result;
+                        var contactosUser = JsonConvert.DeserializeObject<Contactos>(resultas); //Obtener de los datos del usuario ingresado
+                        if (!(contactosUser.ContactosAmigos.Contains(user.NickName)))
+                        {
+                            contactosUser.ContactosAmigos.Add(user.NickName);
+                            var postTask = client.PutAsJsonAsync<Contactos>($"api/Contactos/{GlobalData.ActualUser.NickName}", contactosUser);
+                            postTask.Wait();
+                            if (postTask.Result.IsSuccessStatusCode)
+                            {
+                                return RedirectToAction("Index", "Menu");
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        Contactos nuevoContacto = new Contactos();
+                        nuevoContacto.OwnerNickName = GlobalData.ActualUser.NickName;
+                        nuevoContacto.ContactosAmigos = new List<string>();
+                        nuevoContacto.ContactosAmigos.Add(user.NickName);
+
+                        var postTask = client.PostAsJsonAsync<Contactos>("api/Contactos", nuevoContacto);
+                        postTask.Wait();
+
+                        if (postTask.Result.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("Index", "Menu");
+                        }
+                    }
+                }
+                
+
+
+                //var result = post.Result;
+                //if (result.IsSuccessStatusCode)
+                //{
+                //    return RedirectToAction("Index", "Menu");
+                //}
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+
+        }
+        // POST: Menu/Create
+        
+       
 
         // GET: Menu/Edit/5
         public async Task <IActionResult> Edit()

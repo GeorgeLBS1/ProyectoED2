@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AlgoritmosEDII;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -31,7 +32,8 @@ namespace ProyectoED2.Controllers
             {
                 var results = res.Content.ReadAsStringAsync().Result;
                 user = JsonConvert.DeserializeObject<UserData>(results); //Obtener de los datos del usuario ingresado
-
+                Cesar cesar = new Cesar();
+                password = cesar.Cifrar(password, "1234567890'¿qwertyuiop");
                 if (user.Password == password)
                 {
                     GlobalData.ActualUser = user;

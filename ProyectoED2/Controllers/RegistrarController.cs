@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AlgoritmosEDII;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoED2.Helper;
@@ -34,7 +35,8 @@ namespace ProyectoED2.Controllers
             UserData newUser = new UserData();
             newUser.Name = nombre;
             newUser.NickName = nickName;
-            newUser.Password = password;
+            Cesar cesar = new Cesar();
+            newUser.Password = cesar.Cifrar(password,"1234567890'¿qwertyuiop");
             HttpClient client = _api.Initial();
 
             var postTask = client.PostAsJsonAsync<UserData>("api/SignIn", newUser);

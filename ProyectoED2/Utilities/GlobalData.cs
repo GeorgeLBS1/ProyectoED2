@@ -9,5 +9,6 @@ namespace ProyectoED2
     public static class GlobalData
     {
         public static UserData ActualUser { get; set; }
+        public static string para { get; set; }
     }
 }
