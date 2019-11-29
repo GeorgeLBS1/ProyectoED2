@@ -12,7 +12,10 @@
     <title>Mensajes</title>
 </head>
 <body>
-    <a href="http://localhost:61798/Mensajes">Recargar</a>
+    @{ 
+        string ruta = "http://localhost:61798/Mensajes/Index/" + GlobalData.para;
+    }
+    <a href=@ruta>Recargar</a>
     <table class="table">
         <tbody>
             @foreach (var item in Model)

@@ -29,10 +29,10 @@ namespace Chat_API.Controllers
             return user;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public List<Usuario> Get()
         {
             return _loginService.Get();
-        }*/
+        }
     }
 }

@@ -51,6 +51,11 @@ namespace ProyectoED2.Controllers
             }
         }
 
+        public ActionResult BuscarMensaje()
+        {
+            return View();
+        }
+
         public ActionResult AddContacto()
         {
             return View();

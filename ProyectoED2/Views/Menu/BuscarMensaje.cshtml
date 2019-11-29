@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/styleAddContact.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Buscar Mensaje</title>
+</head>
+<body>
+    <div class="newsletter">
+        <h1>
+            Buscar
+            <span>Mensaje</span>
+        </h1>
+    </div>
+    <form asp-controller="Mensajes" asp-action="Buscar" method="post">
+        <div class="search-box">
+            <input type="text" name="mensaje" class="search-txt" placeholder="Usuario a buscar" />
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+</body>
+</html>
