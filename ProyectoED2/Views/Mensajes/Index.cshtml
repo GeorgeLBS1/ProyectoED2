@@ -9,6 +9,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap">
+    <link rel="stylesheet" type="text/css" href="~/css/styleContactos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title>Mensajes</title>
 </head>
 <body>
@@ -16,30 +20,28 @@
         string ruta = "http://localhost:61798/Mensajes/Index/" + GlobalData.para;
     }
     <a href=@ruta>Recargar</a>
-    <table class="table">
-        <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Emisor)
-                </td>
+            <ul>
+                <li>
+                    <b>@Html.DisplayFor(modelItem => item.Emisor)</b>
+                </li>
                 @if (item.Archivo == false)
                 {
-                    <td>
+                    <li>
                         @Html.DisplayFor(modelItem => item.Cuerpo)
-                    </td>
+                    </li>
                 }
                 @if (item.Archivo == true)
                 {
-                    <td>
+                    <li>
                         @Html.DisplayFor(modelItem => item.NombreArchivo)
-                    </td>
+                    </li>
                 }
 
-                <td>
+                <li>
                     @Html.DisplayFor(modelItem => item.Date)
-                </td>
+                </li>
                 <td>
 
                     @if (item.Emisor == GlobalData.ActualUser.NickName)
@@ -52,23 +54,20 @@
                         @Html.ActionLink("Descargar", "Descargar_archivo", new { id = item.NombreArchivo })
                     }
                 </td>
-            </tr>
+            </ul>
             }
-        </tbody>
-    </table>
     <form asp-controller="Mensajes" asp-action="NuevoMensaje" method="post">
-        <div>
-
-            <input type="text" name="texto" />
-            <center><button type="submit">Enviar</button></center>
-
-        </div>
+        <center>
+            <input type="text" width="800" name="texto" class="search-txt" placeholder="mensaje" />
+            <button type="submit" class="search-btn"><i class="fas fa-paper-plane"></i></button>
+        </center>
+        
     </form>
     <form asp-controller="Mensajes" asp-action="UploadFile" method="post" enctype="multipart/form-data">
         <div>
 
             <h5>Archivo: <input type="file" name="Archivo" /></h5>
-            <center><button type="submit">Realizar acción</button></center>
+            <center><button type="submit">Enviar archivo</button></center>
 
         </div>
     </form>
