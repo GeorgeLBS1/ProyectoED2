@@ -26,7 +26,7 @@ namespace ProyectoED2.Controllers
             {
                 GlobalData.para = id;
             }
-            if (GlobalData.Receptor == null)
+            if (GlobalData.Receptor == null || GlobalData.Receptor.NickName != id)
             {
                 HttpClient client1 = _api.Initial();
                 HttpResponseMessage respuesta = await client1.GetAsync($"api/Login/{GlobalData.para}");
@@ -49,7 +49,7 @@ namespace ProyectoED2.Controllers
             }
             mensajes = mensajes.FindAll(x => ((x.Receptor == GlobalData.para && x.Emisor == GlobalData.ActualUser.NickName) || (x.Emisor == GlobalData.para && x.Receptor == GlobalData.ActualUser.NickName)) );
             mensajes = mensajes.OrderBy(x => x.Date).ToList();
-            int claveCifrado = dh.GenerarLlave(17, 19);
+            int claveCifrado = dh.GenerarLlave(GlobalData.ActualUser.Code, GlobalData.Receptor.Code);
             mensajes.ForEach(x => x.Cuerpo = sdes.Desencriptar(claveCifrado, x.Cuerpo));
             
             
@@ -60,6 +60,10 @@ namespace ProyectoED2.Controllers
         [HttpPost]
         public async Task <IActionResult> Buscar(string mensaje)
         {
+            if (mensaje == null || mensaje == "")
+            {
+                return Content("No puede dejar el campo de búsqueda en blanco");                
+            }
             List<UserData> keys = new List<UserData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage usuarios = await client.GetAsync($"api/Login/");
@@ -89,7 +93,7 @@ namespace ProyectoED2.Controllers
             {
                 MensajesViewModel ms = new MensajesViewModel();
                 ms = item;
-                int llave = dh.GenerarLlave(17, 19);
+                int llave = dh.GenerarLlave(GlobalData.ActualUser.Code, llaves[item.Receptor]);
                 ms.Cuerpo = sdes.Desencriptar(llave, item.Cuerpo);
                 mios.Add(ms);
 
@@ -99,7 +103,7 @@ namespace ProyectoED2.Controllers
             {
                 MensajesViewModel ms = new MensajesViewModel();
                 ms = item;
-                int llave = dh.GenerarLlave(17, 19);
+                int llave = dh.GenerarLlave(llaves[item.Emisor], GlobalData.ActualUser.Code);
                 ms.Cuerpo = sdes.Desencriptar(llave, item.Cuerpo);
                 recib.Add(ms);
             }
@@ -107,18 +111,22 @@ namespace ProyectoED2.Controllers
             mios = mios.FindAll(x => x.Cuerpo.Contains(mensaje));
             recib = recib.FindAll(x => x.Cuerpo.Contains(mensaje));
             var final = mios.Union(recib);
-            final = final.OrderBy(x => x.Date).ToList();
-
-            return View(final);
+            List<MensajesViewModel> Lfinal = final.OrderBy(x => x.Date).ToList();
+            Lfinal.RemoveAll(x => x.Archivo == true);
+            return View(Lfinal);
 
         }
 
         [HttpPost]
         public IActionResult NuevoMensaje(string texto)
         {
+            if (texto == null || texto == "")
+            {
+                return Content("No puede enviar un mensaje en blanco");
+            }
             MensajesViewModel mensajesNuevo = new MensajesViewModel();
 
-            int claveCifrado = dh.GenerarLlave(17, 19);
+            int claveCifrado = dh.GenerarLlave(GlobalData.ActualUser.Code, GlobalData.Receptor.Code);
             texto = sdes.Encriptar(claveCifrado, texto);
             mensajesNuevo.Cuerpo = texto;
             mensajesNuevo.Date = DateTime.Now.AddHours(-6);

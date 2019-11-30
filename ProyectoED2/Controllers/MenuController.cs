@@ -154,15 +154,19 @@ namespace ProyectoED2.Controllers
         {
             try
             {
-                GlobalData.ActualUser.Name = userData.Name;
-                GlobalData.ActualUser.Password = userData.Password;
-                HttpClient client = _api.Initial();
-                var res = client.PutAsJsonAsync($"api/SignIn/", GlobalData.ActualUser);
-                res.Wait();
-                if (res.Result.IsSuccessStatusCode)
+                if (userData.Name != null && userData.Name != "" && userData.Password != null && userData.Password != "")
                 {
-                    return RedirectToAction(nameof(Index));
-                }
+                    GlobalData.ActualUser.Name = userData.Name;
+                    GlobalData.ActualUser.Password = userData.Password;
+                    HttpClient client = _api.Initial();
+                    var res = client.PutAsJsonAsync($"api/SignIn/", GlobalData.ActualUser);
+                    res.Wait();
+                    if (res.Result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                }               
+                
                 return View();
             }
             catch
