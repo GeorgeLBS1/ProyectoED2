@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj": {}
+    "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj": {
+    "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj",
+        "projectUniqueName": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj",
         "projectName": "AlgoritmosEDII",
-        "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj",
-        "packagesPath": "C:\\Users\\josei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\obj\\",
+        "projectPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj",
+        "packagesPath": "C:\\Users\\Jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\josei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -68,21 +68,21 @@
         }
       }
     },
-    "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj": {
+    "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
+        "projectUniqueName": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
         "projectName": "ProyectoED2",
-        "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
-        "packagesPath": "C:\\Users\\josei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\ProyectoED2\\obj\\",
+        "projectPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\ProyectoED2\\ProyectoED2.csproj",
+        "packagesPath": "C:\\Users\\Jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\ProyectoED2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\josei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -96,8 +96,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj": {
-                "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj"
+              "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj": {
+                "projectPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\AlgoritmosEDII\\AlgoritmosEDII.csproj"
               }
             }
           }

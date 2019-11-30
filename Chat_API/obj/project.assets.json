@@ -9013,25 +9013,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josei\\.nuget\\packages\\": {},
+    "C:\\Users\\Jorge\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\Chat_API\\Chat_API.csproj",
+      "projectUniqueName": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\Chat_API\\Chat_API.csproj",
       "projectName": "Chat_API",
-      "projectPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\Chat_API\\Chat_API.csproj",
-      "packagesPath": "C:\\Users\\josei\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josei\\Desktop\\ProyectoEstructuras2\\ProyectoED2\\Chat_API\\obj\\",
+      "projectPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\Chat_API\\Chat_API.csproj",
+      "packagesPath": "C:\\Users\\Jorge\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jorge\\Desktop\\Nueva carpeta\\ProyectoED2\\Chat_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\josei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
