@@ -21,10 +21,7 @@
                 <li>
                     <span class="number"><i class="fa fa-circle-o" aria-hidden="true"></i></span>
                     <span class="name">@amigo</span>
-                    @{
-                        GlobalData.para = amigo;
-                    }
-                    <span class="points"> <a href="@Url.Action("Index", "Chat")"><i class="fa fa-comment-o" aria-hidden="true"></i></a></span>
+                <span class="points">@Html.ActionLink("Mensaje","Index","Mensajes", new {  id=amigo })  <i class="fa fa-comment-o" aria-hidden="true"></i></span>
                 </li>
             }
 

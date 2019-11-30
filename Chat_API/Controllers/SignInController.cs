@@ -37,6 +37,13 @@ namespace Chat_API.Controllers
             
         }
 
+        [HttpDelete("{nombre}")]
+        public IActionResult Delete(string nombre) //Borrar un mensaje para ambos
+        {
+            _loginService.Remove(nombre);
+            return NoContent();
+        }
+
         [HttpPut]
         public IActionResult Update([FromBody]Usuario user) //Editar alguna pizza ya creada
         {

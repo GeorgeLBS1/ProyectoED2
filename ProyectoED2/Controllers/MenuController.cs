@@ -51,6 +51,11 @@ namespace ProyectoED2.Controllers
             }
         }
 
+        public ActionResult BuscarMensaje()
+        {
+            return View();
+        }
+
         public ActionResult AddContacto()
         {
             return View();
@@ -132,6 +137,15 @@ namespace ProyectoED2.Controllers
                 return View(user);
             }
                 return View();
+        }
+
+        public async Task<IActionResult> Borrar(string id)
+        {
+            var mensaje = new MensajesViewModel();
+            HttpClient client = _api.Initial();
+            HttpResponseMessage res = await client.DeleteAsync($"api/SignIn/{id}");
+
+            return Redirect("http://localhost:61798/Login" + GlobalData.para);
         }
 
         // POST: Menu/Edit/5

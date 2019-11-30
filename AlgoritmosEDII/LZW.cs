@@ -8,16 +8,20 @@ namespace AlgoritmosEDII
     public class LZW
     {
         public static Queue<string> CadenaTexto = new Queue<string>();
-        public static void Comprimir(string Ruta)
+        public void Comprimir(string Ruta, ref string globalRuta)
         {
             Dictionary<string, int> Diccionario = new Dictionary<string, int>();
             Leer(Ruta);
             LlenarDiccionario(Diccionario, CadenaTexto);
             FileInfo Informacion = new FileInfo(Ruta);
             string RutaSalida = Informacion.Name.Replace(".txt", ".lzw");
-            Compresion(Diccionario, RutaSalida);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", RutaSalida);
+
+            Compresion(Diccionario, path);
+            globalRuta = path;
 
         }
+
         public static void Leer(string Ruta)
         {
             const int LongitudBuffer = 1000;
@@ -154,7 +158,7 @@ namespace AlgoritmosEDII
                 Stream.Write(ByteAEscribir, 0, ByteAEscribir.Length);
             }
         }
-        public static void Descomprimir(string Ruta)
+        public void Descomprimir(string Ruta, ref string GlobalData)
         {
             List<byte> Lista = new List<byte>();
             List<byte> ListaDiccionario = new List<byte>();
@@ -166,7 +170,9 @@ namespace AlgoritmosEDII
             DepurarData(DatosCompresos, Lista);
             FileInfo Informacion = new FileInfo(Ruta);
             string RutaSalida = Informacion.Name.Replace(".lzw", ".txt");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", RutaSalida);
             DescompresionIterativo(DatosCompresos, Diccionario, RutaSalida);
+            GlobalData = path;
         }
         public static void LecturaDescompresion(string Ruta, List<byte> Lista)
         {

@@ -28,8 +28,11 @@
         </form>
     </div>
 </div>
+<div>
+    @Html.ActionLink("Eliminar Cuenta", "Borrar", new { id = @GlobalData.ActualUser.NickName })
+</div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar</a>
 </div>
 

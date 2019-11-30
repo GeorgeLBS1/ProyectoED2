@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProyectoED2.Models.MensajesViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap">
+    <link rel="stylesheet" type="text/css" href="~/css/styleContactos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Mensajes</title>
+</head>
+<body>
+    @{
+        string ruta = "http://localhost:61798/Mensajes/Index/" + GlobalData.para;
+    }
+    <a href=@ruta>Recargar</a>
+            @foreach (var item in Model)
+            {
+            <ul>
+                <li>
+                    <b>@Html.DisplayFor(modelItem => item.Emisor)</b>
+                </li>
+                @if (item.Archivo == false)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Cuerpo)
+                    </li>
+                }
+                @if (item.Archivo == true)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.NombreArchivo)
+                    </li>
+                }
+
+                <li>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </li>
+                <td>
+
+                    @if (item.Emisor == GlobalData.ActualUser.NickName)
+                    {
+                        @Html.ActionLink("Borrar para todos", "BorrarGLobal", new { id = item.Id }) 
+                    }
+                    @Html.ActionLink("Borrar para mi", "Borrar", new { id = item.Id })
+                    @if (item.Archivo == true)
+                    {
+                        @Html.ActionLink("Descargar", "Descargar_archivo", new { id = item.NombreArchivo })
+                    }
+                </td>
+            </ul>
+            }
+    <form asp-controller="Mensajes" asp-action="NuevoMensaje" method="post">
+        <center>
+            <input type="text" width="800" name="texto" />
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </center>
+        
+    </form>
+    <form asp-controller="Mensajes" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+        <div>
+
+            <h5>Archivo: <input type="file" name="Archivo" /></h5>
+            <center><button type="submit">Enviar archivo</button></center>
+
+        </div>
+    </form>
+
+</body>
+</html>
