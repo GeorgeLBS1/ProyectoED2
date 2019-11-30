@@ -10,6 +10,7 @@ using ProyectoED2.Helper;
 using ProyectoED2.Models;
 using ProyectoED2.Utilities;
 using AlgoritmosEDII;
+using System.IO;
 
 namespace ProyectoED2.Controllers
 {
@@ -121,6 +122,7 @@ namespace ProyectoED2.Controllers
             texto = sdes.Encriptar(claveCifrado, texto);
             mensajesNuevo.Cuerpo = texto;
             mensajesNuevo.Date = DateTime.Now.AddHours(-6);
+            mensajesNuevo.Archivo = false;
             //DateTime HoraLocal = new DateTime(0, 0, 0, 6, 0, 0);
             //mensajesNuevo.Date.Subtract(HoraLocal);
             mensajesNuevo.Emisor = GlobalData.ActualUser.NickName;
@@ -210,5 +212,141 @@ namespace ProyectoED2.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile Archivo)
+        {
+            if (Archivo == null || Archivo.Length == 0)
+            {
+                return Content("Arcivo no seleccionado");
+            }
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", Archivo.FileName);
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await Archivo.CopyToAsync(stream);
+            }
+            GlobalData.ArchivoEntrada = path;
+            LZW Compresor = new LZW();
+            string RutaSalida = "";
+            Compresor.Comprimir(path, ref RutaSalida);
+            GlobalData.ArchivoSalida = RutaSalida;
+            FileInfo fileInfo = new FileInfo(path);
+            Queue<byte> Texto = new Queue<byte>();
+            LeerArchivo(ref Texto, GlobalData.ArchivoSalida);
+            string salidaCompreso = "";
+            while (Texto.Count > 0)
+            {
+                salidaCompreso += Convert.ToString(Texto.Dequeue()) + ",";
+            }
+
+            MensajesViewModel mensajesNuevo = new MensajesViewModel();
+            mensajesNuevo.Cuerpo = salidaCompreso;
+            mensajesNuevo.Date = DateTime.Now.AddHours(-6);
+            mensajesNuevo.Archivo = true;
+            mensajesNuevo.NombreArchivo = fileInfo.Name;
+            //DateTime HoraLocal = new DateTime(0, 0, 0, 6, 0, 0);
+            //mensajesNuevo.Date.Subtract(HoraLocal);
+            mensajesNuevo.Emisor = GlobalData.ActualUser.NickName;
+            mensajesNuevo.Receptor = GlobalData.para;
+            mensajesNuevo.Visible = "";
+            HttpClient client = _api.Initial();
+            var postTask = client.PostAsJsonAsync<MensajesViewModel>("api/Mensajes", mensajesNuevo);
+            postTask.Wait();
+            var result = postTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                return Redirect("http://localhost:61798/Mensajes/Index/" + GlobalData.para);
+            }
+            return RedirectToAction("Index", "Mensajes");
+
+        }
+
+        void LeerArchivo(ref Queue<byte> TextoAleer, string rutaOrigen) //LEER TEXTO UTILIZANDO UN BUFFER Y TODO LEIDO EN BYTES
+        {
+            const int bufferLength = 1024;
+            var buffer = new byte[bufferLength];
+            using (var file = new FileStream(rutaOrigen, FileMode.Open))
+            {
+                using (var reader = new BinaryReader(file))
+                {
+                    while (reader.BaseStream.Position != reader.BaseStream.Length)
+                    {
+                        buffer = reader.ReadBytes(bufferLength);
+                        foreach (var item in buffer)
+                        {
+                            TextoAleer.Enqueue(item);
+                        }
+                    }
+
+                }
+
+            }
+
+
+        }
+
+        public async Task <IActionResult> Descargar_archivo(string id)
+        {
+            HttpClient client = _api.Initial();
+            MensajesViewModel archivo = new MensajesViewModel();
+            HttpResponseMessage res = await client.GetAsync($"api/Files/{id}");
+            Queue<byte> textoEntrada = new Queue<byte>();
+            if (res.IsSuccessStatusCode)
+            {
+                var results = res.Content.ReadAsStringAsync().Result;
+                archivo = JsonConvert.DeserializeObject<MensajesViewModel>(results);
+                HelperArchivos helperArchivos = new HelperArchivos();
+                textoEntrada = helperArchivos.LeerCifrado(archivo.Cuerpo);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", archivo.NombreArchivo);
+                path = path.Replace(".txt", ".lzw");
+                helperArchivos.EscribirArchivo(textoEntrada, path);
+                LZW lzw = new LZW();
+                string archivoNormalRuta = "";
+                lzw.Descomprimir(path, ref archivoNormalRuta);
+                GlobalData.ArchivoSalida = archivoNormalRuta;
+                return RedirectToAction("Download");
+            }
+
+            return Redirect("http://localhost:61798/Mensajes/Index/" + GlobalData.para);
+
+        }
+
+        public async Task<IActionResult> Download() //Método para realizar las descargas automaticas del archivo
+        {
+            var path = GlobalData.ArchivoSalida;
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(path), Path.GetFileName(path));
+        }
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".cif", "text/plain"},
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"}
+            };
+        }
+
     }
 }

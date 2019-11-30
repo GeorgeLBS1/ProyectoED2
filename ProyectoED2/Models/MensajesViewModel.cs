@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace ProyectoED2.Models
         public string Cuerpo { get; set; } //El mensaje en sí 
         public string Visible { get; set; } //identificador para borrar o no el mensaje
         public DateTime Date { get; set; }
+        public bool Archivo { get; set; }
+        public string NombreArchivo { get; set; }
     }
 }

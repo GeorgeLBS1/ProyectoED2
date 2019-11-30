@@ -252,7 +252,6 @@ C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\bin\Debug\ne
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.csprojAssemblyReference.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\staticwebassets\ProyectoED2.StaticWebAssets.Manifest.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\staticwebassets\ProyectoED2.StaticWebAssets.xml
-C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.RazorAssemblyInfo.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.RazorAssemblyInfo.cs
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.AssemblyInfoInputs.cache
@@ -432,3 +431,6 @@ C:\Users\Jorge\Desktop\https\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Raz
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Razor\Views\Mensajes\Index.cshtml.g.cs
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Razor\Views\Menu\BuscarMensaje.cshtml.g.cs
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\Razor\Views\Mensajes\Buscar.cshtml.g.cs
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\bin\Debug\netcoreapp3.0\MongoDB.Driver.GridFS.dll
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\bin\Debug\netcoreapp3.0\MongoDB.Driver.Legacy.dll
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\ProyectoED2\obj\Debug\netcoreapp3.0\ProyectoED2.MvcApplicationPartsAssemblyInfo.cache

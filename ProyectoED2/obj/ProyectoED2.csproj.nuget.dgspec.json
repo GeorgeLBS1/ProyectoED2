@@ -43,6 +43,10 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "MongoDB.Driver.GridFS": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -133,6 +137,10 @@
               "target": "Package",
               "version": "[2.9.3, )"
             },
+            "MongoDB.Driver.GridFS": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
@@ -140,6 +148,14 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.4, )"
+            },
+            "System.Runtime.Extensions": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "mongocsharpdriver": {
+              "target": "Package",
+              "version": "[2.9.3, )"
             }
           },
           "imports": [

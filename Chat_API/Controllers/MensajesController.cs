@@ -22,6 +22,8 @@ namespace Chat_API.Controllers
         public ActionResult<List<Mensajes>> Get() =>
            _mensajesService.Get();
 
+       
+
         [HttpGet("{nombre}")] //Obtener todos los mensajes de cierto usuario
         public ActionResult<List<Mensajes>> Get(string nombre) =>
             _mensajesService.Get(nombre);

@@ -43,6 +43,10 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "MongoDB.Driver.GridFS": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

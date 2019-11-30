@@ -22,6 +22,9 @@ namespace Chat_API.Services
         public Mensajes GetMensajes(string mensaje) =>
             _mensajes.Find<Mensajes>(x => x.Cuerpo == mensaje).FirstOrDefault();
 
+        public Mensajes GetFile(string name) =>
+            _mensajes.Find<Mensajes>(x => x.NombreArchivo == name).FirstOrDefault();
+
         public List<Mensajes> Get(string nombre) => //Obtener los mensajes de cierta conversación
             _mensajes.Find<Mensajes>(usuario => usuario.Emisor == nombre || usuario.Receptor == nombre).ToList();
 

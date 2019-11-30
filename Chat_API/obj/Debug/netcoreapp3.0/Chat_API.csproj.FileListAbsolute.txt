@@ -245,7 +245,6 @@ C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\bin\Debug\netco
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.csprojAssemblyReference.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\staticwebassets\Chat_API.StaticWebAssets.Manifest.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\staticwebassets\Chat_API.StaticWebAssets.xml
-C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.AssemblyInfoInputs.cache
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.AssemblyInfo.cs
 C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.RazorTargetAssemblyInfo.cache
@@ -379,3 +378,5 @@ C:\Users\Jorge\Desktop\https\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_A
 C:\Users\Jorge\Desktop\https\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.csproj.CopyComplete
 C:\Users\Jorge\Desktop\https\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.dll
 C:\Users\Jorge\Desktop\https\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.pdb
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\bin\Debug\netcoreapp3.0\MongoDB.Driver.GridFS.dll
+C:\Users\josei\Desktop\ProyectoEstructuras2\ProyectoED2\Chat_API\obj\Debug\netcoreapp3.0\Chat_API.MvcApplicationPartsAssemblyInfo.cache

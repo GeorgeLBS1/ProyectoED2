@@ -12,7 +12,7 @@
     <title>Mensajes</title>
 </head>
 <body>
-    @{ 
+    @{
         string ruta = "http://localhost:61798/Mensajes/Index/" + GlobalData.para;
     }
     <a href=@ruta>Recargar</a>
@@ -20,21 +20,35 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Emisor)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emisor)
+                </td>
+                @if (item.Archivo == false)
+                {
                     <td>
                         @Html.DisplayFor(modelItem => item.Cuerpo)
                     </td>
+                }
+                @if (item.Archivo == true)
+                {
                     <td>
-                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.NombreArchivo)
                     </td>
-                    <td>
-                        @Html.ActionLink("Borrar", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-                </tr>
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Borrar", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @if (item.Archivo == true)
+                    {
+                        @Html.ActionLink("Descargar", "Descargar_archivo", new { id=item.NombreArchivo })
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>
@@ -46,8 +60,14 @@
 
         </div>
     </form>
+    <form asp-controller="Mensajes" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+        <div>
 
+            <h5>Archivo: <input type="file" name="Archivo" /></h5>
+            <center><button type="submit">Realizar acción</button></center>
 
+        </div>
+    </form>
 
 </body>
 </html>
