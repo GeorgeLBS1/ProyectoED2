@@ -195,6 +195,30 @@ namespace ProyectoED2.Controllers
         {
             return View();
         }
+        
+        
+        public async Task <IActionResult> Borrar(string id)
+        {
+            HttpClient client = _api.Initial();
+            HttpResponseMessage res = await client.GetAsync($"api/Mensajes/{GlobalData.ActualUser.NickName}");
+            List<MensajesViewModel> mensajesViews = new List<MensajesViewModel>();
+            MensajesViewModel mensajeAborrar = new MensajesViewModel();
+            if (res.IsSuccessStatusCode)
+            {
+                var results = res.Content.ReadAsStringAsync().Result;
+                mensajesViews = JsonConvert.DeserializeObject<List<MensajesViewModel>>(results); //Obtener de los datos del usuario ingresado
+                mensajeAborrar = mensajesViews.Find(x => x.Id == id);
+                mensajeAborrar.Visible = GlobalData.ActualUser.NickName;
+                var postTask = client.PutAsJsonAsync<MensajesViewModel>($"api/Mensajes/{id}", mensajeAborrar);
+                postTask.Wait();
+                if (postTask.Result.IsSuccessStatusCode)
+                {
+                    return Redirect("http://localhost:61798/Mensajes/Index/" + GlobalData.para);
+                }
+            }
+
+            return Redirect("http://localhost:61798/Mensajes/Index/" + GlobalData.para);
+        }
 
         // POST: Mensajes/Delete/5
         [HttpPost]

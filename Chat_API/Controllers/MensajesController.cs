@@ -50,12 +50,11 @@ namespace Chat_API.Controllers
         [HttpPut("{eliminar}")]
         public IActionResult Update(string eliminar, Mensajes mensaje)
         {
-            var msg = _mensajesService.GetMensajes(eliminar);
+            var msg = _mensajesService.GetId(eliminar);
             if (msg == null)
             {
                 return NotFound();
             }
-            mensaje.Id = msg.Id;
             _mensajesService.BorrarParcial(eliminar, mensaje);
             return NoContent();
         }

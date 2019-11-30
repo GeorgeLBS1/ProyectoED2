@@ -41,8 +41,8 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Borrar", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Borrar para todos", "Delete", new { id= item.Cuerpo }) |
+                    @Html.ActionLink("Borrar para mi", "Borrar", new { id= item.Id })
                     @if (item.Archivo == true)
                     {
                         @Html.ActionLink("Descargar", "Descargar_archivo", new { id=item.NombreArchivo })
