@@ -38,12 +38,12 @@ namespace Chat_API.Controllers
         [HttpDelete("{texto}")]
         public IActionResult Delete(string texto) //Borrar un mensaje para ambos
         {
-            var mensaje = _mensajesService.GetMensajes(texto);
+            var mensaje = _mensajesService.GetId(texto);
             if (mensaje == null)
             {
                 return NotFound();
             }
-            _mensajesService.Remove(mensaje.Emisor);
+            _mensajesService.Remove(mensaje.Id);
             return NoContent();
         }
 

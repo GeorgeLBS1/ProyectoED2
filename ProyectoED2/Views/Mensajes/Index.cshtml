@@ -41,11 +41,15 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Borrar para todos", "Delete", new { id= item.Cuerpo }) |
-                    @Html.ActionLink("Borrar para mi", "Borrar", new { id= item.Id })
+
+                    @if (item.Emisor == GlobalData.ActualUser.NickName)
+                    {
+                        @Html.ActionLink("Borrar para todos", "BorrarGLobal", new { id = item.Id }) 
+                    }
+                    @Html.ActionLink("Borrar para mi", "Borrar", new { id = item.Id })
                     @if (item.Archivo == true)
                     {
-                        @Html.ActionLink("Descargar", "Descargar_archivo", new { id=item.NombreArchivo })
+                        @Html.ActionLink("Descargar", "Descargar_archivo", new { id = item.NombreArchivo })
                     }
                 </td>
             </tr>

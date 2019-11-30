@@ -50,6 +50,6 @@ namespace Chat_API.Services
             _mensajes.DeleteOne(x => x.Emisor == mensajes.Emisor);
 
         public void Remove(string Emisor) => //Eliminar buscando el emisor
-            _mensajes.DeleteOne(x => x.Emisor == Emisor);
+            _mensajes.DeleteOne(x => x.Id == Emisor);
     }
 }

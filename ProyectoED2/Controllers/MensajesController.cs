@@ -195,8 +195,16 @@ namespace ProyectoED2.Controllers
         {
             return View();
         }
+
         
-        
+        public async Task<IActionResult> BorrarGLobal(string id)
+        {
+            var mensaje = new MensajesViewModel();
+            HttpClient client = _api.Initial();
+            HttpResponseMessage res = await client.DeleteAsync($"api/Mensajes/{id}");
+
+            return Redirect("http://localhost:61798/Mensajes/Index/" + GlobalData.para);
+        }
         public async Task <IActionResult> Borrar(string id)
         {
             HttpClient client = _api.Initial();
