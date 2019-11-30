@@ -32,6 +32,10 @@ namespace ProyectoED2.Controllers
         [HttpPost]
         public IActionResult Create(string nombre, string nickName, string password)
         {
+            if (nombre == null || nombre == "" || nickName == null || nickName == "" || password == null || password == "")
+            {
+                return Content("No puede dejar ningun campo en blanco");
+            }
             UserData newUser = new UserData();
             newUser.Name = nombre;
             newUser.NickName = nickName;
@@ -41,14 +45,14 @@ namespace ProyectoED2.Controllers
 
             var postTask = client.PostAsJsonAsync<UserData>("api/SignIn", newUser);
             postTask.Wait();
-
+            
             var result = postTask.Result;
             if (result.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Login");
             }
 
-            return RedirectToAction("Index");
+            return Content("Error en la creacion del usuario, ya existe un usuario con ese mismo nickname");
         }
 
         

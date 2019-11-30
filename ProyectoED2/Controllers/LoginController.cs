@@ -15,9 +15,16 @@ namespace ProyectoED2.Controllers
     public class LoginController : Controller
     {
         ChatAPI _api = new ChatAPI();
+        
         // GET: Login
         public ActionResult Index()
         {
+            //Limpiar variables globales
+            GlobalData.Receptor = null;
+            GlobalData.ActualUser = null;
+            GlobalData.para = null;
+            GlobalData.ArchivoEntrada = null;
+            GlobalData.ArchivoSalida = null;
             return View();
         }
         // GET: Login/Details/5
@@ -25,6 +32,10 @@ namespace ProyectoED2.Controllers
         [HttpPost]
         public async Task<IActionResult> Ingresar(string username, string password)
         {
+            if (password == null)
+            {
+                password = " ";
+            }
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync($"api/Login/{username}");
             UserData user = new UserData();
@@ -41,11 +52,11 @@ namespace ProyectoED2.Controllers
                 }
                 else
                 {
-                    return Content("Error en la autentiacación, credenciales incorrectas");
+                    return Content("Error en la autentiacación, credenciales incorrectas o el usuario no existe");
                 }
 
             }
-            return Content("Error en la autentiacación, credenciales incorrectas");
+            return Content("Error en la autentiacación, credenciales incorrectas o el usuario no existe");
         }
 
        
